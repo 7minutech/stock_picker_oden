@@ -10,7 +10,7 @@ def make_days_hash(stocks)
     end
     days
 end
-def get_max_profit(days)
+def set_max_profit(days)
     #loop through each day
     days.keys.each do |day_i|
         max_proft = -100
@@ -33,10 +33,17 @@ def get_max_profit(days)
     end
     days
 end
-
+def get_max_profit(days)
+    profit = []
+    days.keys.each do |day|
+        profit.push(days[day][:max_proft][:profit])
+    end
+    profit.max
+end
 
 make_days_hash(stocks)
 stock_picker(stocks)
-p get_max_profit(make_days_hash(stocks))
+set_max_profit(make_days_hash(stocks))
+p get_max_profit(set_max_profit(make_days_hash(stocks)))
 #expected output
 #1,4]  # for a profit of $15 - $3 == $12
