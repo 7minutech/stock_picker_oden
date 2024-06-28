@@ -40,10 +40,24 @@ def get_max_profit(days)
     end
     profit.max
 end
+def get_buy_and_sell_days(days,max_proft)
+    day_buy_sell = []
+    #go through days and see which matches most profit
+    #days are not 0 index so must offset
+    days.keys.each do |day|
+        if days[day][:max_proft][:profit] == max_proft
+            day_buy_sell.push((days[day][:day_num])-1)
+            day_buy_sell.push((days[day][:max_proft][:day_sold])-1)
+        end
+    end
+    day_buy_sell
+end
 
 make_days_hash(stocks)
 stock_picker(stocks)
 set_max_profit(make_days_hash(stocks))
-p get_max_profit(set_max_profit(make_days_hash(stocks)))
+get_max_profit(set_max_profit(make_days_hash(stocks)))
+p get_buy_and_sell_days(set_max_profit(make_days_hash(stocks)),get_max_profit(set_max_profit(make_days_hash(stocks))))
+
 #expected output
 #1,4]  # for a profit of $15 - $3 == $12
