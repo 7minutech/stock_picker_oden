@@ -6,7 +6,7 @@ end
 def make_days_hash(stocks)
     days = {}
     stocks.each_with_index do |price,index|
-        days["day#{index+1}".to_sym] = {day_num: index+1, day_price: price, most_day_proft: 0}
+        days["day#{index+1}".to_sym] = {day_num: index+1, day_price: price, max_proft: 0}
     end
     days
 end
