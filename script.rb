@@ -1,8 +1,7 @@
 
 stocks = [17,3,6,9,15,8,6,1,10]
 LAST_DAY = stocks.length
-def stock_picker(stocks)
-end
+
 def make_days_hash(stocks)
     days = {}
     stocks.each_with_index do |price,index|
@@ -52,12 +51,12 @@ def get_buy_and_sell_days(days,max_proft)
     end
     day_buy_sell
 end
-
-make_days_hash(stocks)
-stock_picker(stocks)
-set_max_profit(make_days_hash(stocks))
-get_max_profit(set_max_profit(make_days_hash(stocks)))
-p get_buy_and_sell_days(set_max_profit(make_days_hash(stocks)),get_max_profit(set_max_profit(make_days_hash(stocks))))
-
+def stock_picker(stocks)
+    days = make_days_hash(stocks)
+    days = set_max_profit(days)
+    max_proft = get_max_profit(days)
+    get_buy_and_sell_days(days,max_proft)
+end
 #expected output
-#1,4]  # for a profit of $15 - $3 == $12
+p stock_picker(stocks)
+#[1,4]  # for a profit of $15 - $3 == $12
